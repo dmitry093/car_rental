@@ -1,0 +1,21 @@
+# src/AppBundle/Resources/config/doctrine/RentalPoint.orm.yml
+AppBundle\Entity\RentalPoint:
+  type: entity
+  table: RentalPoint
+  id:
+    id:
+       type: integer
+       generator:
+        strategy: AUTO
+  fields:
+    name:
+        type: string
+        length: 255
+        unique: true
+  oneToMany:
+    StartPoints:
+      targetEntity: RentalHistory
+      mappedBy: RentalPoint
+    EndPoints:
+      targetEntity: RentalHistory
+      mappedBy: RentalPoint

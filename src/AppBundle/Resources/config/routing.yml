@@ -1,0 +1,4 @@
+app_history:
+    resource: "@AppBundle/Resources/config/routing/rentalhistory.yml"
+    prefix:   /history
+

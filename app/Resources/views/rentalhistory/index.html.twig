@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rentalhistories list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_start</th>
+                <th>Date_end</th>
+                <th>Client_name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rentalHistory in rentalHistories %}
+            <tr>
+                <td><a href="{{ path('history_show', { 'id': rentalHistory.id }) }}">{{ rentalHistory.id }}</a></td>
+                <td>{% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ rentalHistory.clientname }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('history_show', { 'id': rentalHistory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('history_new') }}">Create a new rentalHistory</a>
+        </li>
+    </ul>
+{% endblock %}

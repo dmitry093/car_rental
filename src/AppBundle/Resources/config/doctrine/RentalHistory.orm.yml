@@ -1,0 +1,39 @@
+# src/AppBundle/Resources/config/doctrine/RentalHistory.orm.yml
+AppBundle\Entity\RentalHistory:
+  type: entity
+  table: RentalHistory
+  id:
+    id:
+        type: integer
+        generator:
+         strategy: AUTO
+  fields:
+    date_start:
+        type: datetime
+    date_end:
+        type: datetime
+    client_name:
+        type: string
+        length: 255
+  manyToOne:
+    RentalPointStart:
+      targetEntity: RentalPoint
+      inversedBy: StartPoints
+      joinColumn:
+      name: point_start_id
+      referencedColumnName: id
+    RentalPointEnd:
+      targetEntity: RentalPoint
+      inversedBy: EndPoints
+      joinColumn:
+      name: point_end_id
+      referencedColumnName: id
+    Car:
+      targetEntity: Car
+      inversedBy: Cars
+      joinColumn:
+        name: car_id
+        referencedColumnName: id
+  lifecycleCallbacks:
+      prePersist: [ setCreatedAtValue ]
+      preUpdate: [ setUpdatedAtValue ]
