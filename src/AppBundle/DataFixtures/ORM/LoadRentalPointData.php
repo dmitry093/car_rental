@@ -38,6 +38,8 @@ class LoadRentalPointData extends AbstractFixture implements  OrderedFixtureInte
         $om->persist($rp_sibirskaya);
         $om->persist($rp_rybalko);
 
+        $om->flush();
+
         $this->addReference('rentalpoint-lenina', $rp_lenina);
         $this->addReference('rentalpoint-kompros', $rp_kp);
         $this->addReference('rentalpoint-parkovyi', $rp_parkovyi);

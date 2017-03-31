@@ -155,4 +155,9 @@ class Car
     {
         return $this->picture;
     }
+
+    public function __toString()
+    {
+        return $this->getModel();
+    }
 }

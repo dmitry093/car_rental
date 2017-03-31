@@ -137,4 +137,9 @@ class RentalPoint
     {
         return $this->EndPoints;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }

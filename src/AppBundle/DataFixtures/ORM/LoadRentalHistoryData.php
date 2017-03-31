@@ -11,7 +11,7 @@ use AppBundle\Entity\RentalHistory;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\RentalPoint;
+
 
 
 class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureInterface
@@ -26,7 +26,7 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip1->setDateStart(new \DateTime('2017-03-30 15:00:00'));
 
         $trip1->setRentalPointEnd($om->merge($this->getReference('rentalpoint-lenina')));
-        $trip1->setDateStart(new \DateTime('2017-03-30 17:00:00'));
+        $trip1->setDateEnd(new \DateTime('2017-03-30 17:00:00'));
 
         $trip2 = new RentalHistory();
         $trip2->setCar($om->merge($this->getReference('car-vw-jetta')));
@@ -36,7 +36,7 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip2->setDateStart(new \DateTime('2017-03-30 16:00:00'));
 
         $trip2->setRentalPointEnd($om->merge($this->getReference('rentalpoint-lenina')));
-        $trip2->setDateStart(new \DateTime('2017-03-31 09:00:00'));
+        $trip2->setDateEnd(new \DateTime('2017-03-31 09:00:00'));
 
         $trip3 = new RentalHistory();
         $trip3->setCar($om->merge($this->getReference('car-kia-optima')));
@@ -46,7 +46,7 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip3->setDateStart(new \DateTime('2017-03-30 18:00:00'));
 
         $trip3->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros')));
-        $trip3->setDateStart(new \DateTime('2017-03-30 22:00:00'));
+        $trip3->setDateEnd(new \DateTime('2017-03-30 22:00:00'));
 
         $trip4 = new RentalHistory();
         $trip4->setCar($om->merge($this->getReference('car-skoda-superb')));
@@ -56,7 +56,14 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip4->setDateStart(new \DateTime('2017-03-30 22:00:00'));
 
         $trip4->setRentalPointEnd($om->merge($this->getReference('rentalpoint-parkovyi')));
-        $trip4->setDateStart(new \DateTime('2017-03-31 21:00:00'));
+        $trip4->setDateEnd(new \DateTime('2017-03-31 21:00:00'));
+
+        $om->persist($trip1);
+        $om->persist($trip2);
+        $om->persist($trip3);
+        $om->persist($trip4);
+
+        $om->flush();
 
     }
     public function getOrder()

@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * RentalHistory
  */
@@ -202,6 +202,7 @@ class RentalHistory
     public function setCreatedAtValue()
     {
         // Add your code here
+
     }
 
     /**

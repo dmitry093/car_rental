@@ -62,6 +62,8 @@ class LoadCarData extends AbstractFixture implements  OrderedFixtureInterface
         $om->persist($carKiaOptima);
         $om->persist($carKiaRio);
 
+        $om->flush();
+
         $this->addReference('car-vw-passat', $carVWPassat);
         $this->addReference('car-vw-jetta', $carVWJetta);
         $this->addReference('car-vw-polo', $carVWPolo);
