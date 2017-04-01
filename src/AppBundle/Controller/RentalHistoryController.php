@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\RentalHistory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Rentalhistory controller.
  *
