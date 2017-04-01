@@ -1,14 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>Rentalhistories list</h1>
+    <h1>История проката</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date_start</th>
-                <th>Date_end</th>
-                <th>Client_name</th>
+                <th>№</th>
+                <th>ФИО арендатора:</th>
+                <th>Госномер автомобиля:</th>
+                <th>Марка и модель:</th>
+                <th>Пункт выдачи:</th>
+                <th>Дата выдачи:</th>
+                <th>Пункт приема:</th>
+                <th>Дата приема:</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,9 +20,13 @@
         {% for rentalHistory in rentalHistories %}
             <tr>
                 <td><a href="{{ path('history_show', { 'id': rentalHistory.id }) }}">{{ rentalHistory.id }}</a></td>
-                <td>{% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ rentalHistory.clientname }}</td>
+                <td>{{ rentalHistory.Car.LicensePlate }}</td>
+                <td>{{ rentalHistory.Car }}</td>
+                <td>{{ rentalHistory.RentalPointStart }}</td>
+                <td>{% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ rentalHistory.RentalPointEnd }}</td>
+                <td>{% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

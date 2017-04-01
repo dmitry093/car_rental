@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/apy/datagrid-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/components/jquery" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
@@ -62,6 +63,7 @@
     <orderEntry type="module-library">
       <library name="PHP">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/apy/datagrid-bundle" />
           <root url="file://$MODULE_DIR$/vendor/components/jquery" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
@@ -104,6 +106,7 @@
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/apy/datagrid-bundle" />
           <root url="file://$MODULE_DIR$/vendor/components/jquery" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
