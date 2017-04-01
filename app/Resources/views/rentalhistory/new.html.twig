@@ -33,12 +33,8 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input class="btn btn-success" type="submit" value="Создать" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('history_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
 {% endblock %}

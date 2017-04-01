@@ -56,10 +56,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('history_show', { 'id': rentalHistory.id }) }}">show</a>
+                            <a class="glyphicon glyphicon-file" href="{{ path('history_show', { 'id': rentalHistory.id }) }}">Просмотр</a>
                         </li>
                         <li>
-                            <a href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">edit</a>
+                            <a class="glyphicon glyphicon-pencil" href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">Редактировать</a>
                         </li>
                     </ul>
                 </td>
@@ -68,9 +68,7 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('history_new') }}">Create a new rentalHistory</a>
-        </li>
-    </ul>
+
+    <a  type="button" class="btn btn-primary" href="{{ path('history_new') }}">Добавить историю аренды</a>
+
 {% endblock %}

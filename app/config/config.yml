@@ -80,7 +80,7 @@ swiftmailer:
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
-    use_controller: false
+    use_controller: true
     bundles:        [ 'AppBundle' ]
 
     filters:
@@ -111,7 +111,6 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../vendor/twbs/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
             output: "fonts/glyphicons-halflings-regular.woff"
-
         jquery:
             inputs:
                 - %kernel.root_dir%/../vendor/components/jquery/jquery.js

@@ -30,38 +30,41 @@
 
 
     <h1>Запись аренды</h1>
-    <table>
+    <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>№</th>
                 <td>{{ rentalHistory.id }}</td>
             </tr>
             <tr>
-                <th>Date_start</th>
-                <td>{% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Date_end</th>
-                <td>{% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Client_name</th>
+                <th>Арендатор:</th>
                 <td>{{ rentalHistory.clientname }}</td>
             </tr>
+            <tr>
+                <th>Автомобиль:</th>
+                <td>
+                    <img src="{{ asset('uploads/cars/' ~ rentalHistory.Car.picture) }}" alt="{{ rentalHistory.Car.licenseplate }}" />
+                    <br> Марка и модель: {{ rentalHistory.Car}}
+                    <br> Госномер: {{ rentalHistory.Car.licenseplate }}
+                </td>
+            </tr>
+            <tr>
+                <th>Маршрут:</th>
+                <td>
+                    Пункт выдачи: {{ rentalHistory.RentalPointStart }} ({% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %} )
+                    <br> Пункт приема: {{ rentalHistory.RentalPointEnd }} ({% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %} )
+                </td>
+            </tr>
+
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('history_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    <form>
+        <a class="btn btn-primary"  href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">Редактировать</a>
+        {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Удалить">
+        {{ form_end(delete_form) }}
+    </form>
+
 {% endblock %}
