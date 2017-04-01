@@ -2,3 +2,10 @@ app_history:
     resource: "@AppBundle/Resources/config/routing/rentalhistory.yml"
     prefix:   /history
 
+app_car:
+    resource: "@AppBundle/Resources/config/routing/car.yml"
+    prefix:   /car
+
+app_rpoint:
+    resource: "@AppBundle/Resources/config/routing/rentalpoint.yml"
+    prefix:   /rpoint

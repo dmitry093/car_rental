@@ -1,7 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Rentalhistory edit</h1>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('history_index') }}">Прокат автомобилей</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('history_index') }}">История</a></li>
+                    <li><a href="{{ path('car_index') }}">Автомобили</a></li>
+                    <li><a href="{{ path('rentalpoint_index') }}">Пункты выдачи</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <ul class="breadcrumb">
+        <li><a href="{{ path('history_index') }}">Список</a></li>
+        <li class="active">Редактирование истории</li>
+    </ul>
+
+
+    <h1>Редактировать историю аренды</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
