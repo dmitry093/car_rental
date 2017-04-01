@@ -15,7 +15,7 @@ AppBundle\Entity\RentalPoint:
   oneToMany:
     StartPoints:
       targetEntity: RentalHistory
-      mappedBy: RentalPoint
+      mappedBy: RentalPointStart
     EndPoints:
       targetEntity: RentalHistory
-      mappedBy: RentalPoint
+      mappedBy: RentalPointEnd
