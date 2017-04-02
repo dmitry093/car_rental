@@ -206,6 +206,18 @@ class RentalHistory
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {
+        if ($this->date_start->getTimestamp() > time()){
+            $context->buildViolation('Будущее пока не наступило!')
+                ->atPath('date_start')
+                ->addViolation();
+        }
+
+        if ($this->date_end->getTimestamp() > time()){
+            $context->buildViolation('Будущее пока не наступило!')
+                ->atPath('date_end')
+                ->addViolation();
+        }
+
         if ($this->date_start->getTimestamp() > $this->date_end->getTimestamp()) {
             $context->buildViolation('Дата приемки авто не может быть раньше даты выдачи!')
                 ->atPath('date_end')
