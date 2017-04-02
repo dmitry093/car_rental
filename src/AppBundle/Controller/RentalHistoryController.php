@@ -78,7 +78,7 @@ class RentalHistoryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('history_edit', array('id' => $rentalHistory->getId()));
+            return $this->redirectToRoute('history_show', array('id' => $rentalHistory->getId()));
         }
 
         return $this->render('rentalhistory/edit.html.twig', array(

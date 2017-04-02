@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -14,28 +15,26 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ path('history_index') }}">История</a></li>
-                    <li><a href="{{ path('car_index') }}">Автомобили</a></li>
+                    <li class="active"><a href="{{ path('car_index') }}">Автомобили</a></li>
+                    <li><a href="{{ path('history_index') }}">История</a></li>
                     <li><a href="{{ path('rentalpoint_index') }}">Пункты выдачи</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>
 
-
     <ul class="breadcrumb">
-        <li><a href="{{ path('history_index') }}">Список</a></li>
-        <li class="active">Редактирование истории</li>
+        <li><a href="{{ path('car_index') }}">Список</a></li>
+        <li class="active">Добавление автомобиля</li>
     </ul>
 
-
-    <h1>Редактировать историю аренды</h1>
-
+    <h1>Редактировать автомобиль</h1>
 
     {{ form_start(edit_form) }}
         {{ form_errors(edit_form) }}
         {{ form_widget(edit_form) }}
         <input class="btn btn-primary" type="submit" value="Применить" />
     {{ form_end(edit_form) }}
+
 
 {% endblock %}

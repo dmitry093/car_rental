@@ -32,6 +32,7 @@
     <h1>Добавить новую историю аренды авто</h1>
 
     {{ form_start(form) }}
+        {{ form_errors(form) }}
         {{ form_widget(form) }}
         <input class="btn btn-success" type="submit" value="Создать" />
     {{ form_end(form) }}

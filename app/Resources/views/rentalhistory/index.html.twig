@@ -14,6 +14,14 @@
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+    {% stylesheets '@bootstrap_table_filter_css' %}
+    <link rel="stylesheet" type="text/css"  href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+    {% javascripts  '@bootstrap_table_filter_js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -52,19 +60,20 @@
             data-page-list="[5, 10, 50, 100, ВСЕ]"
             data-show-refresh="true"
             data-show-toggle="true"
-            data-show-columns="true">
-
+            data-show-columns="true"
+            data-id-field="id"
+            data-filter-control="true">
         <thead>
             <tr>
-                <th data-sortable="true">№</th>
-                <th data-sortable="true">ФИО арендатора:</th>
-                <th data-sortable="true">Госномер автомобиля:</th>
-                <th data-sortable="true">Марка и модель:</th>
-                <th data-sortable="true">Пункт выдачи:</th>
-                <th data-sortable="true">Дата выдачи:</th>
-                <th data-sortable="true" >Пункт приема:</th>
-                <th data-sortable="true">Дата приема:</th>
-                <th>Действия:</th>
+                <th data-field="id" data-sortable="true">№</th>
+                <th data-field="fio" data-sortable="true" data-filter-control="select">ФИО арендатора:</th>
+                <th data-field="plate" data-sortable="true" data-filter-control="select">Госномер автомобиля:</th>
+                <th data-field="model" data-sortable="true" data-filter-control="select">Марка и модель:</th>
+                <th data-field="point_start" data-sortable="true" data-filter-control="select">Пункт выдачи:</th>
+                <th data-field="date_start" data-sortable="true">Дата выдачи:</th>
+                <th data-field="point_end" data-sortable="true" data-filter-control="select">Пункт приема:</th>
+                <th data-field="date_end" data-sortable="true">Дата приема:</th>
+                <th data-field="actions"></th> Действия:</th>
             </tr>
         </thead>
         <tbody>
@@ -72,11 +81,35 @@
             <tr>
                 <td><a href="{{ path('history_show', { 'id': rentalHistory.id }) }}">{{ rentalHistory.id }}</a></td>
                 <td>{{ rentalHistory.clientname }}</td>
-                <td><a href="{{ path('car_show', { 'id': rentalHistory.Car.id }) }}">{{ rentalHistory.Car.LicensePlate }}</a></td>
-                <td>{{ rentalHistory.Car }}</td>
-                <td><a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointStart.id }) }}">{{ rentalHistory.RentalPointStart }}</a></td>
+                <td>
+                    {% if rentalHistory.Car is not null %}
+                        <a href="{{ path('car_show', { 'id': rentalHistory.Car.id }) }}">{{ rentalHistory.Car.LicensePlate }}</a>
+                    {% else %}
+                        Н/Д
+                    {% endif %}
+                </td>
+                <td>
+                    {% if rentalHistory.Car is not null %}
+                        {{ rentalHistory.Car }}
+                    {% else %}
+                        Н/Д
+                    {% endif %}
+                </td>
+                <td>
+                    {% if rentalHistory.RentalPointStart is not null %}
+                        <a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointStart.id }) }}">{{ rentalHistory.RentalPointStart }}</a>
+                    {% else %}
+                        Н/Д
+                    {% endif %}
+                </td>
                 <td>{% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td><a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointEnd.id }) }}">{{ rentalHistory.RentalPointEnd }}</a></td>
+                <td>
+                    {% if rentalHistory.RentalPointEnd is not null %}
+                        <a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointEnd.id }) }}">{{ rentalHistory.RentalPointEnd }}</a>
+                    {% else %}
+                        Н/Д
+                    {% endif %}
+                </td>
                 <td>{% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>

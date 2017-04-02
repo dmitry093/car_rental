@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('history_index') }}">Прокат автомобилей</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('rentalpoint_index') }}">Пункты выдачи</a></li>
+                    <li><a href="{{ path('history_index') }}">История</a></li>
+                    <li><a href="{{ path('car_index') }}">Автомобили</a></li>
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <ul class="breadcrumb">
+        <li class="active">Список</li>
+    </ul>
+
+    <h1>Пункты проката</h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Адрес</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rentalPoint in rentalPoints %}
+            <tr>
+                <td><a href="{{ path('rentalpoint_show', { 'id': rentalPoint.id }) }}">{{ rentalPoint.id }}</a></td>
+                <td>{{ rentalPoint.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="glyphicon glyphicon-file" href="{{ path('rentalpoint_show', { 'id': rentalPoint.id }) }}">Просмотр</a>
+                        </li>
+                        <li>
+                            <a class="glyphicon glyphicon-pencil" href="{{ path('rentalpoint_edit', { 'id': rentalPoint.id }) }}">Редактировать</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a type="button" class="btn btn-primary" href="{{ path('rentalpoint_new') }}">Добавить пункт</a>
+
+{% endblock %}

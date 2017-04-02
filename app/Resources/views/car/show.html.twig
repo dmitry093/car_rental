@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('history_index') }}">Прокат автомобилей</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('car_index') }}">Автомобили</a></li>
+                    <li><a href="{{ path('history_index') }}">История</a></li>
+                    <li><a href="{{ path('rentalpoint_index') }}">Пункты выдачи</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <ul class="breadcrumb">
+        <li><a href="{{ path('car_index') }}">Список</a></li>
+        <li class="active">Промотр автомобиля</li>
+    </ul>
+
+    <h1>Запись автомобиля</h1>
+
+   <table class="table">
+        <tbody>
+            <tr>
+                <th>№</th>
+                <td>{{ car.id }}</td>
+            </tr>
+            <tr>
+                <th>Марка и модель:</th>
+                <td>{{ car.model }}</td>
+            </tr>
+            <tr>
+                <th>Госномер:</th>
+                <td>{{ car.licenseplate }}</td>
+            </tr>
+            <tr>
+                <th>Изображение:</th>
+                <td><img src="{{ asset('uploads/cars/' ~ car.picture) }}" alt="{{ car.licenseplate }}" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ dump(timings) }}
+
+    <a class="btn btn-primary"  href="{{ path('car_edit', { 'id': car.id }) }}">Редактировать</a>
+
+    {{ form_start(delete_form) }}
+        <input class="btn btn-danger" type="submit" value="Удалить" >
+    {{ form_end(delete_form) }}
+
+{% endblock %}

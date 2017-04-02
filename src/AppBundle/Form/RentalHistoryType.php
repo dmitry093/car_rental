@@ -13,7 +13,7 @@ class RentalHistoryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date_start')->add('date_end')->add('client_name')->add('RentalPointStart')->add('RentalPointEnd')->add('Car');
+        $builder->add('client_name', null, array('label' => 'ФИО арендатора:'))->add('Car', null, array('label' => 'Автомобиль:'))->add('RentalPointStart', null, array('label' => 'Адрес проката, выдавшего авто:'))->add('date_start', null, array('label' => 'Дата выдачи:'))->add('RentalPointEnd', null, array('label' => 'Адрес проката, принявшего авто:'))->add('date_end', null,  array('label' => 'Дата приемки:'));
     }
     
     /**

@@ -123,3 +123,10 @@ assetic:
         bootstrap_table_locale_js:
             inputs:
                 - "%kernel.root_dir%/../vendor/wenzhixin/bootstrap-table/dist/locale/bootstrap-table-ru-RU.min.js"
+
+        bootstrap_table_filter_css:
+            inputs:
+                - "%kernel.root_dir%/../vendor/wenzhixin/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.css"
+        bootstrap_table_filter_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/wenzhixin/bootstrap-table/dist/extensions/filter-control/bootstrap-table-filter-control.js"
