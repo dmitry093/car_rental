@@ -18,6 +18,9 @@ Simple site for car rental organization
 
 - Clone this repository;
 - Install all dependencies using Composer;
+<pre>
+    php composer.phar install
+</pre>
 - Create database using:
 <pre>
     php bin/console doctrine:database:create
@@ -30,6 +33,21 @@ Simple site for car rental organization
 <pre>
     php bin/console doctrine:fixtures:load
 </pre>
+
+## ROUTES
+- history of cars rent
+<pre>
+    /history
+</pre>
+- cars
+<pre>
+    /car
+</pre>
+- rental points
+<pre>
+    /rpoint
+</pre>
+
 
 ## USED TECHNOLOGIES
 
