@@ -60,7 +60,7 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
 
         $trip5 = new RentalHistory();
         $trip5->setCar($om->merge($this->getReference('car-kia-rio')));
-        $trip5->setClientName('Федоров Федр Федорович');
+        $trip5->setClientName('Федоров Федор Федорович');
 
         $trip5->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
         $trip5->setDateStart(new \DateTime('2017-03-31 08:00:00'));
