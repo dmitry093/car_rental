@@ -46,7 +46,7 @@
                     {% if rentalHistory.Car is not null %}
                         <img src="{{ asset('uploads/cars/' ~ rentalHistory.Car.picture) }}" alt="{{ rentalHistory.Car.licenseplate }}" />
                         <br> Марка и модель: {{ rentalHistory.Car}}
-                        <br> Госномер: {{ rentalHistory.Car.licenseplate }}
+                        <br> Госномер: <a href="{{ path('car_show', { 'id': rentalHistory.Car.id }) }}">{{ rentalHistory.Car.LicensePlate }}</a>
                     {% else %}
                         Н/Д
                     {% endif %}
@@ -56,13 +56,13 @@
                 <th>Маршрут:</th>
                 <td>
                     {% if rentalHistory.RentalPointStart is not null %}
-                        Пункт выдачи: {{ rentalHistory.RentalPointStart }} ({% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %} )
+                        Пункт выдачи:  <a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointStart.id }) }}">{{ rentalHistory.RentalPointStart }}</a> ({% if rentalHistory.datestart %}{{ rentalHistory.datestart|date('Y-m-d H:i:s') }}{% endif %} )
                     {% else %}
                         Н/Д
                     {% endif %}
                     <br>
                     {% if rentalHistory.RentalPointEnd is not null %}
-                        Пункт приема: {{ rentalHistory.RentalPointEnd }} ({% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %} )
+                        Пункт приема: <a href="{{ path('rentalpoint_show', { 'id': rentalHistory.RentalPointEnd.id }) }}">{{ rentalHistory.RentalPointEnd }}</a> ({% if rentalHistory.dateend %}{{ rentalHistory.dateend|date('Y-m-d H:i:s') }}{% endif %} )
                     {% else %}
                         Н/Д
                     {% endif %}

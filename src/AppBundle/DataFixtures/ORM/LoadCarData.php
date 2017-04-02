@@ -52,6 +52,16 @@ class LoadCarData extends AbstractFixture implements  OrderedFixtureInterface
         $carKiaRio->setLicensePlate("E002EE159");
         $carKiaRio->setPicture("rio.jpeg");
 
+        $carToyotaCamry = new Car();
+        $carToyotaCamry->setModel("Toyota Camry");
+        $carToyotaCamry->setLicensePlate("M001MM159");
+        $carToyotaCamry->setPicture("camry.jpeg");
+
+        $carToyotaCorolla = new Car();
+        $carToyotaCorolla->setModel("Toyota Corolla");
+        $carToyotaCorolla->setLicensePlate("M002MM159");
+        $carToyotaCorolla->setPicture("corolla.jpeg");
+
         $om->persist($carVWPassat);
         $om->persist($carVWJetta);
         $om->persist($carVWPolo);
@@ -61,6 +71,9 @@ class LoadCarData extends AbstractFixture implements  OrderedFixtureInterface
 
         $om->persist($carKiaOptima);
         $om->persist($carKiaRio);
+
+        $om->persist($carToyotaCorolla);
+        $om->persist($carToyotaCamry);
 
         $om->flush();
 
@@ -73,6 +86,9 @@ class LoadCarData extends AbstractFixture implements  OrderedFixtureInterface
 
         $this->addReference('car-kia-optima', $carKiaOptima);
         $this->addReference('car-kia-rio', $carKiaRio);
+
+        $this->addReference('car-toyota-corolla', $carToyotaCorolla);
+        $this->addReference('car-toyota-camry', $carToyotaCamry);
 
     }
     public function getOrder()

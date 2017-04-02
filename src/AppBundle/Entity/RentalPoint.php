@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * RentalPoint
  */
@@ -14,6 +16,7 @@ class RentalPoint
 
     /**
      * @var string
+     * @Assert\Length(min=3)
      */
     private $name;
 

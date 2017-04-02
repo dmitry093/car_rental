@@ -115,8 +115,28 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip10->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
         $trip10->setDateStart(new \DateTime('2017-03-31 23:00:00'));
 
-        $trip10->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros  ')));
+        $trip10->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros')));
         $trip10->setDateEnd(new \DateTime('2017-04-01 10:00:00'));
+
+        $trip11 = new RentalHistory();
+        $trip11->setCar($om->merge($this->getReference('car-toyota-corolla')));
+        $trip11->setClientName('Антонов Антон Антонович');
+
+        $trip11->setRentalPointStart($om->merge($this->getReference('rentalpoint-parkovyi')));
+        $trip11->setDateStart(new \DateTime('2017-04-01 09:00:00'));
+
+        $trip11->setRentalPointEnd($om->merge($this->getReference('rentalpoint-parkovyi')));
+        $trip11->setDateEnd(new \DateTime('2017-04-01 10:00:00'));
+
+        $trip12 = new RentalHistory();
+        $trip12->setCar($om->merge($this->getReference('car-toyota-camry')));
+        $trip12->setClientName('Алексеев Алексей Алексеевич');
+
+        $trip12->setRentalPointStart($om->merge($this->getReference('rentalpoint-kompros')));
+        $trip12->setDateStart(new \DateTime('2017-04-01 12:00:00'));
+
+        $trip12->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros')));
+        $trip12->setDateEnd(new \DateTime('2017-04-01 21:00:00'));
 
         $om->persist($trip1);
         $om->persist($trip2);
@@ -128,6 +148,8 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $om->persist($trip8);
         $om->persist($trip9);
         $om->persist($trip10);
+        $om->persist($trip11);
+        $om->persist($trip12);
 
         $om->flush();
 

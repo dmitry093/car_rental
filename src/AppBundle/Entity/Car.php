@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Car
  */
@@ -14,11 +16,16 @@ class Car
 
     /**
      * @var string
+     * @Assert\Length(min=3)
      */
     private $model;
 
     /**
      * @var string
+     * @Assert\Regex(
+     *     pattern="@[A-Z]\d\d\d[A-Z][A-Z]\d{2,3}@  ",
+     *     message="Госномер должен быть вида XXX000XX99"
+     * )
      */
     private $license_plate;
 

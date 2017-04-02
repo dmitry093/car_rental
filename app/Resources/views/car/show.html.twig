@@ -50,7 +50,28 @@
         </tbody>
     </table>
 
-    {{ dump(timings) }}
+    <h2>Средняя продолжительность аренды:</h2>
+    <h4>При выдаче в пункте:</h4>
+    <table class="table">
+        {% for timing in timings_start %}
+            <tr>
+                <th> <a href="{{ path('rentalpoint_show', { 'id': timing.id }) }}">{{ timing.name}}</a>:</th>
+                <td>{{ timing.minutes|round }} минут</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h4>При приемке в пункте:</h4>
+
+    <table class="table">
+        {% for timing in timings_end %}
+            <tr>
+                <th> <a href="{{ path('rentalpoint_show', { 'id': timing.id }) }}">{{ timing.name}}</a>:</th>
+                <td>{{ timing.minutes|round }} минут</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
 
     <a class="btn btn-primary"  href="{{ path('car_edit', { 'id': car.id }) }}">Редактировать</a>
 

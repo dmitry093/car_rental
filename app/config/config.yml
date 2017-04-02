@@ -67,6 +67,9 @@ doctrine:
         auto_mapping: true
         mappings:
               AppBundle: ~
+        dql:
+              numeric_functions:
+                    timestampdiff:  Oro\ORM\Query\AST\Functions\Numeric\TimestampDiff
 
 # Swiftmailer Configuration
 swiftmailer:

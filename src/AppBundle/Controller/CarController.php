@@ -38,6 +38,23 @@ class CarController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $car->getPicture();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('car_images_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $car->setPicture($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($car);
             $em->flush();
@@ -61,18 +78,31 @@ class CarController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->select('AVG((rh.date_end - rh.date_start)/ 3600)')
+        $qb->select('AVG(TIMESTAMPDIFF(MINUTE, rh.date_start, rh.date_end)) as minutes, rp.name, rp.id')
             ->from('AppBundle:RentalHistory', 'rh')
+            ->join('rh.RentalPointStart', 'rp')
             ->where('rh.Car = :car_id')
             ->setParameter('car_id', $car->getId())
             ->groupBy('rh.RentalPointStart');
         $query = $qb->getQuery();
-        $timings = $query->getResult();
+        $timings_start = $query->getResult();
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('AVG(TIMESTAMPDIFF(MINUTE, rh.date_start, rh.date_end)) as minutes, rp.name, rp.id')
+            ->from('AppBundle:RentalHistory', 'rh')
+            ->join('rh.RentalPointEnd', 'rp')
+            ->where('rh.Car = :car_id')
+            ->setParameter('car_id', $car->getId())
+            ->groupBy('rh.RentalPointEnd');
+        $query = $qb->getQuery();
+
+        $timings_end = $query->getResult();
 
 
         return $this->render('car/show.html.twig', array(
             'car' => $car,
-            'timings' => $timings,
+            'timings_start' => $timings_start,
+            'timings_end' => $timings_end,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -88,6 +118,24 @@ class CarController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = $car->getPicture();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('car_images_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $car->setPicture($fileName);
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('car_show', array('id' => $car->getId()));

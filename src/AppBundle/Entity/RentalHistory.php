@@ -1,6 +1,10 @@
 <?php
 
 namespace AppBundle\Entity;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 /**
  * RentalHistory
  */
@@ -23,6 +27,7 @@ class RentalHistory
 
     /**
      * @var string
+     * @Assert\Length(min=3)
      */
     private $client_name;
 
@@ -195,4 +200,17 @@ class RentalHistory
     {
         return $this->Car;
     }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if ($this->date_start->getTimestamp() > $this->date_end->getTimestamp()) {
+            $context->buildViolation('Дата приемки авто не может быть раньше даты выдачи!')
+                ->atPath('date_end')
+                ->addViolation();
+        }
+    }
+
 }

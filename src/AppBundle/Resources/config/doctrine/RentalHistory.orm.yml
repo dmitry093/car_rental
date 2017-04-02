@@ -22,15 +22,18 @@ AppBundle\Entity\RentalHistory:
       joinColumn:
       name: point_start_id
       referencedColumnName: id
+      onDelete: SET NULL
     RentalPointEnd:
       targetEntity: RentalPoint
       inversedBy: EndPoints
       joinColumn:
       name: point_end_id
       referencedColumnName: id
+      onDelete: SET NULL
     Car:
       targetEntity: Car
       inversedBy: Cars
       joinColumn:
-        name: car_id
-        referencedColumnName: id
+      name: car_id
+      referencedColumnName: id
+      onDelete: SET NULL
