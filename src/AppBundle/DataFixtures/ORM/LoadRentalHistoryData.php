@@ -58,10 +58,76 @@ class LoadRentalHistoryData extends AbstractFixture implements  OrderedFixtureIn
         $trip4->setRentalPointEnd($om->merge($this->getReference('rentalpoint-parkovyi')));
         $trip4->setDateEnd(new \DateTime('2017-03-31 21:00:00'));
 
+        $trip5 = new RentalHistory();
+        $trip5->setCar($om->merge($this->getReference('car-kia-rio')));
+        $trip5->setClientName('Федоров Федр Федорович');
+
+        $trip5->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip5->setDateStart(new \DateTime('2017-03-31 08:00:00'));
+
+        $trip5->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros')));
+        $trip5->setDateEnd(new \DateTime('2017-03-31 09:00:00'));
+
+        $trip6 = new RentalHistory();
+        $trip6->setCar($om->merge($this->getReference('car-kia-optima')));
+        $trip6->setClientName('Дмитриев Дмитрий Дмитриевич');
+
+        $trip6->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip6->setDateStart(new \DateTime('2017-03-31 10:00:00'));
+
+        $trip6->setRentalPointEnd($om->merge($this->getReference('rentalpoint-parkovyi')));
+        $trip6->setDateEnd(new \DateTime('2017-03-31 13:00:00'));
+
+        $trip7 = new RentalHistory();
+        $trip7->setCar($om->merge($this->getReference('car-vw-passat')));
+        $trip7->setClientName('Сергеев Сергей Сергеевич');
+
+        $trip7->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip7->setDateStart(new \DateTime('2017-03-31 11:00:00'));
+
+        $trip7->setRentalPointEnd($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip7->setDateEnd(new \DateTime('2017-03-31 16:00:00'));
+
+        $trip8 = new RentalHistory();
+        $trip8->setCar($om->merge($this->getReference('car-skoda-rapid')));
+        $trip8->setClientName('Максимов Максим Максимович');
+
+        $trip8->setRentalPointStart($om->merge($this->getReference('rentalpoint-sibirskaya')));
+        $trip8->setDateStart(new \DateTime('2017-03-31 12:00:00'));
+
+        $trip8->setRentalPointEnd($om->merge($this->getReference('rentalpoint-sibirskaya')));
+        $trip8->setDateEnd(new \DateTime('2017-03-31 21:00:00'));
+
+        $trip9 = new RentalHistory();
+        $trip9->setCar($om->merge($this->getReference('car-skoda-rapid')));
+        $trip9->setClientName('Вячеславов Вячеслав Вячеславович');
+
+        $trip9->setRentalPointStart($om->merge($this->getReference('rentalpoint-sibirskaya')));
+        $trip9->setDateStart(new \DateTime('2017-03-31 22:00:00'));
+
+        $trip9->setRentalPointEnd($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip9->setDateEnd(new \DateTime('2017-03-31 23:00:00'));
+
+        $trip10 = new RentalHistory();
+        $trip10->setCar($om->merge($this->getReference('car-skoda-rapid')));
+        $trip10->setClientName('Виталиев Виталий Витальевич');
+
+        $trip10->setRentalPointStart($om->merge($this->getReference('rentalpoint-lenina')));
+        $trip10->setDateStart(new \DateTime('2017-03-31 23:00:00'));
+
+        $trip10->setRentalPointEnd($om->merge($this->getReference('rentalpoint-kompros  ')));
+        $trip10->setDateEnd(new \DateTime('2017-04-01 10:00:00'));
+
         $om->persist($trip1);
         $om->persist($trip2);
         $om->persist($trip3);
         $om->persist($trip4);
+        $om->persist($trip5);
+        $om->persist($trip6);
+        $om->persist($trip7);
+        $om->persist($trip8);
+        $om->persist($trip9);
+        $om->persist($trip10);
 
         $om->flush();
 

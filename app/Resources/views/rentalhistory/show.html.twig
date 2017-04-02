@@ -60,11 +60,11 @@
     </table>
 
 
-    <form>
-        <a class="btn btn-primary"  href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">Редактировать</a>
-        {{ form_start(delete_form) }}
-            <input class="btn btn-danger" type="submit" value="Удалить">
-        {{ form_end(delete_form) }}
-    </form>
+
+    <a class="btn btn-primary"  href="{{ path('history_edit', { 'id': rentalHistory.id }) }}">Редактировать</a>
+    {{ form_start(delete_form) }}
+       <input class="btn btn-danger" type="submit" value="Удалить">
+    {{ form_end(delete_form) }}
+
 
 {% endblock %}

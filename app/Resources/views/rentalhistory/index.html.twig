@@ -1,5 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
+    {% stylesheets '@bootstrap_table_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+    {% javascripts '@jquery' '@bootstrap_table_js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% javascripts  '@bootstrap_table_locale_js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -28,17 +43,27 @@
     <h1>История проката</h1>
 
 
-    <table class="table">
+    <table
+            class="table table-striped"
+            data-toggle="table"
+            data-locale="ru-RU"
+            data-search="true"
+            data-pagination="true"
+            data-page-list="[5, 10, 50, 100, ВСЕ]"
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true">
+
         <thead>
             <tr>
-                <th>№</th>
-                <th>ФИО арендатора:</th>
-                <th>Госномер автомобиля:</th>
-                <th>Марка и модель:</th>
-                <th>Пункт выдачи:</th>
-                <th>Дата выдачи:</th>
-                <th>Пункт приема:</th>
-                <th>Дата приема:</th>
+                <th data-sortable="true">№</th>
+                <th data-sortable="true">ФИО арендатора:</th>
+                <th data-sortable="true">Госномер автомобиля:</th>
+                <th data-sortable="true">Марка и модель:</th>
+                <th data-sortable="true">Пункт выдачи:</th>
+                <th data-sortable="true">Дата выдачи:</th>
+                <th data-sortable="true" >Пункт приема:</th>
+                <th data-sortable="true">Дата приема:</th>
                 <th>Действия:</th>
             </tr>
         </thead>

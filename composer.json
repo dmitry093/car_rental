@@ -32,7 +32,8 @@
         "symfony/assetic-bundle": "^2.8",
         "components/jquery": "^3.2",
         "twbs/bootstrap": "3.3.x-dev",
-        "apy/datagrid-bundle": "3.0.0"
+        "apy/datagrid-bundle": "3.0.0",
+        "wenzhixin/bootstrap-table": "1.11.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
